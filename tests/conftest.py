@@ -15,7 +15,7 @@ def browser_manager():
 
     browser_options = webdriver.ChromeOptions()
     # удаление сообщения "Браузером Chrome управляет автоматизированное тестовое ПО"
-    # browser_options.add_experimental_option("excludeSwitches", ['enable-automation'])
+    browser_options.add_experimental_option("excludeSwitches", ['enable-automation'])
     # не выводить изображение браузера на экран
     # browser_options.add_argument('--headless=new')
     browser.config.driver_options = browser_options
