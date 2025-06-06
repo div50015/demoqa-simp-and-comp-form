@@ -8,7 +8,7 @@ def browser_manager():
     browser.config.base_url = 'https://demoqa.com'
     browser.config.timeout = 2.0
     browser.config.window_width = 900
-    browser.config.window_height = 600
+    browser.config.window_height = 900
 
     # вводить текст одной строкой через JS (selenium вводит текст посимвольно)
     # browser.config.type_by_js = True
