@@ -26,6 +26,20 @@ def tests_demoqa_complex_form():
     # GIVEN
     app.complex_page.open_complex_page()
 
-    # WHEN
-    pass
+    # WHET
+    app.complex_page.type_first_name()
+    app.complex_page.type_last_name()
+    app.complex_page.type_email()
+    app.complex_page.type_gender()
+    app.complex_page.type_number()
+    app.complex_page.type_data_birth()
+    app.complex_page.type_subjects()
+    app.complex_page.type_hobbi()
+    app.complex_page.type_file()
+    app.complex_page.type_address()
+    app.complex_pagetype_state()
+    app.complex_page.type_city()
+    app.complex_page.clich_submit()
+
     # THEN
+    app.complex_page.shouid_complex_registration_form()
