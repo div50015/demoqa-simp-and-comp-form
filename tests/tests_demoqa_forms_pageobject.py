@@ -20,3 +20,12 @@ def tests_demoqa_simple_form():
         'Russia Novocherkassk',
         'Russia Sochi',
     )
+
+
+def tests_demoqa_complex_form():
+    # GIVEN
+    app.complex_page.open_complex_page()
+
+    # WHEN
+    pass
+    # THEN
