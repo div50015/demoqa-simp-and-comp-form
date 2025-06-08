@@ -17,7 +17,7 @@ class ComplexPage:
         self.locator_birth = browser.element("#dateOfBirthInput")
         self.locator_subject = browser.element("#subjectsInput")
 
-        self.locator_hobbi = browser.all("[for^=hobbies-checkbox]").element_by(have.text("Sports"))
+        self.locator_hobbi = browser.all("[for^=hobbies-checkbox]")
 
         self.locator_file = browser.element("#uploadPicture")
         self.locator_address = browser.element("#currentAddress")
@@ -34,43 +34,43 @@ class ComplexPage:
         self.locator_elements.click()
         self.locator_practice_form.click()
 
-    def type_first_name(self):
-        self.locator_first_name.type("Igor")
+    def type_first_name(self, value):
+        self.locator_first_name.type(value)
 
-    def type_last_name(self):
-        self.locator_last_name.type("Degt")
+    def type_last_name(self, value):
+        self.locator_last_name.type(value)
 
-    def type_email(self):
-        self.locator_email.type("div@novoch.ru")
+    def type_email(self, value):
+        self.locator_email.type(value)
 
-    def type_gender(self):
-        self.locator_gender.element_by(have.value("Male")).click()
+    def type_gender(self, value):
+        self.locator_gender.element_by(have.value(value)).element("..").click()
 
-    def type_number(self):
-        self.locator_number.type("9185024041")
+    def type_number(self, value):
+        self.locator_number.type(value)
 
-    def type_data_birth(self):
-        self.locator_birth.send_keys(Keys.CONTROL, "a").type("04 august 1967").press_enter()
+    def type_data_birth(self, value):
+        self.locator_birth.send_keys(Keys.CONTROL, "a").type(value).press_enter()
 
-    def type_subjects(self):
-        self.locator_subject.type("History").press_enter()
+    def type_subjects(self, value):
+        self.locator_subject.type(value).press_enter()
 
-    def type_hobbi(self):
-        self.locator_hobbi.perform(command.js.scroll_into_view).click()
+    def type_hobbi(self, value):
+        self.locator_hobbi.element_by(have.text(value)).perform(command.js.scroll_into_view).click()
 
-    def type_file(self):
-        self.locator_file.send_keys(os.path.dirname(tests.__file__), "/files/ball.jpg")
+    def type_file(self, value):
+        self.locator_file.send_keys(os.path.dirname(tests.__file__), f'/files/{value}')
 
-    def type_address(self):
-        self.locator_address.type("Russian Novocherkassk")
+    def type_address(self, value):
+        self.locator_address.type(value)
 
-    def type_state(self):
+    def type_state(self, value):
         self.locator_click_state.click()
-        self.locator_enter_state.element_by(have.text("Rajasthan")).click()
+        self.locator_enter_state.element_by(have.text(value)).click()
 
-    def type_city(self):
+    def type_city(self, value):
         self.locator_click_city.click()
-        self.locator_enter_city.element_by(have.text("Jaipur")).click()
+        self.locator_enter_city.element_by(have.text(value)).click()
 
     def clich_submit(self):
         self.locator_submit.click()
@@ -78,18 +78,20 @@ class ComplexPage:
         pass
 
     # THEN
-    def shouid_complex_registration_form(self):
+    def shouid_complex_registration_form(
+        self, fullname, email, gender, number, birth, subject, hobbi, file, address, state_city
+    ):
         self.locator_should.should(
             have.texts(
-                ('Student Name', 'Igor Degt'),
-                ('Student Email', 'div@novoch.ru'),
-                ('Gender', 'Male'),
-                ('Mobile', '9185024041'),
-                ('Date of Birth', '04 August,1967'),
-                ('Subjects', 'History'),
-                ('Hobbies', 'Sports'),
-                ('Picture', 'ball.jpg'),
-                ('Address', 'Russian Novocherkassk'),
-                ('State and City', 'Rajasthan Jaipur'),
+                ('Student Name', fullname),
+                ('Student Email', email),
+                ('Gender', gender),
+                ('Mobile', number),
+                ('Date of Birth', birth),
+                ('Subjects', subject),
+                ('Hobbies', hobbi),
+                ('Picture', file),
+                ('Address', address),
+                ('State and City', state_city),
             )
         )

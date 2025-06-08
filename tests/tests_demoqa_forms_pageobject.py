@@ -27,19 +27,30 @@ def tests_demoqa_complex_form():
     app.complex_page.open_complex_page()
 
     # WHET
-    app.complex_page.type_first_name()
-    app.complex_page.type_last_name()
-    app.complex_page.type_email()
-    app.complex_page.type_gender()
-    app.complex_page.type_number()
-    app.complex_page.type_data_birth()
-    app.complex_page.type_subjects()
-    app.complex_page.type_hobbi()
-    app.complex_page.type_file()
-    app.complex_page.type_address()
-    app.complex_pagetype_state()
-    app.complex_page.type_city()
+    app.complex_page.type_first_name('Igor')
+    app.complex_page.type_last_name('Deg')
+    app.complex_page.type_email('div@novoch.ru')
+    app.complex_page.type_gender('Male')
+    app.complex_page.type_number('9185024041')
+    app.complex_page.type_data_birth('04 August 1967')
+    app.complex_page.type_subjects('History')
+    app.complex_page.type_hobbi('Sports')
+    app.complex_page.type_file('ball.jpg')
+    app.complex_page.type_address('Russia Novocherkassk')
+    app.complex_page.type_state('Rajasthan')
+    app.complex_page.type_city('Jaipur')
     app.complex_page.clich_submit()
 
     # THEN
-    app.complex_page.shouid_complex_registration_form()
+    app.complex_page.shouid_complex_registration_form(
+        'Igor Deg',
+        'div@novoch.ru',
+        'Male',
+        '9185024041',
+        '04 August,1967',
+        'History',
+        'Sports',
+        'ball.jpg',
+        'Russia Novocherkassk',
+        'Rajasthan Jaipur',
+    )
