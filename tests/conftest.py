@@ -1,6 +1,7 @@
 import pytest
 from selene import browser
 from selenium import webdriver
+from utils import attach
 
 
 @pytest.fixture(scope='function', autouse=True)
@@ -19,3 +20,12 @@ def browser_manager():
     # не выводить изображение браузера на экран
     # browser_options.add_argument('--headless=new')
     browser.config.driver_options = browser_options
+
+    yield browser
+
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
+
+    browser.quit()
