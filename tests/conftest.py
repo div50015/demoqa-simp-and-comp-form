@@ -32,7 +32,9 @@ def browser_manager():
 
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
-        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub", options=options
+        command_executor=f"http://192.168.1.100:4444/wd/hub",
+        options=options,
+        # command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub", options=options
     )
 
     browser.config.driver = driver
@@ -41,10 +43,10 @@ def browser_manager():
     browser.config.window_width = 900
     browser.config.window_height = 900
 
-    yield browser
+    yield
 
     attach.add_screenshot(browser)
-    attach.add_logs(browser)
+    # attach.add_logs(browser)
     attach.add_html(browser)
     attach.add_video(browser)
 
