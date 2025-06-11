@@ -37,7 +37,7 @@ def browser_manager():
 
     browser.config.driver = driver
     browser.config.base_url = 'https://demoqa.com'
-    browser.config.timeout = 2.0
+    browser.config.timeout = 4.0
     browser.config.window_width = 900
     browser.config.window_height = 900
 
