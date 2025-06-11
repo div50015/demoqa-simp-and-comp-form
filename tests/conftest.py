@@ -32,12 +32,12 @@ def browser_manager():
 
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
-        command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub", options=options
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub", options=options
     )
 
     browser.config.driver = driver
     browser.config.base_url = 'https://demoqa.com'
-    browser.config.timeout = 2.0
+    browser.config.timeout = 4.0
     browser.config.window_width = 900
     browser.config.window_height = 900
 
