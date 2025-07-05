@@ -7,7 +7,7 @@ from utils import attach
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_manager():
-    # # Local start browser
+    # # Local start browser config head
     # browser.config.base_url = 'https://demoqa.com'
     # browser.config.timeout = 2.0
     # browser.config.window_width = 900
@@ -23,8 +23,9 @@ def browser_manager():
     # # не выводить изображение браузера на экран
     # # browser_options.add_argument('--headless=new')
     # browser.config.driver_options = browser_options
+    # # Local start browser config end
 
-    # Remote start browser
+    # Remote start browser config head
     browser_version = '100.0'
     options = Options()
     selenoid_capabilities = {
@@ -45,6 +46,7 @@ def browser_manager():
     browser.config.timeout = 4.0
     browser.config.window_width = 900
     browser.config.window_height = 900
+    # Remote start browser config end
 
     yield
 
